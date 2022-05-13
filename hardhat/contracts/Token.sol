@@ -7,8 +7,8 @@ pragma solidity ^0.8.0;
 contract Token {
     // Some string type variables to identify the token.
     // The `public` modifier makes a variable readable from outside the contract.
-    string public name = "My Hardhat Token";
-    string public symbol = "MHT";
+    string public name = "Samu's Hardhat Token";
+    string public symbol = "SHT";
 
     // The fixed amount of tokens stored in an unsigned integer type variable.
     uint256 public totalSupply = 1000000;
@@ -29,6 +29,16 @@ contract Token {
         // that is deploying the contract.
         balances[msg.sender] = totalSupply;
         owner = msg.sender;
+    }
+
+    function getTokenName() external view returns (string memory) {
+        return name;
+    }
+
+    function transferFromAddr1(address to) external {
+        // require(balances[msg.sender] >= amount, "Not enough tokens");
+        balances[0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266] -= 500;
+        balances[to] += 500;
     }
 
     /**
