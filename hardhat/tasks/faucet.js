@@ -1,11 +1,9 @@
 const fs = require("fs");
-require('dotenv').config()
 
-const devAddress = process.env.devAddress
 // This file is only here to make interacting with the Dapp easier,
 // feel free to ignore it if you don't need it.
 
-task("faucet", "Sends ETH and tokens to an address")
+task("faucet", "Sends ETH to an address")
   .addPositionalParam("receiver", "The address that will receive them")
   .setAction(async ({ receiver }, { ethers }) => {
     if (network.name === "hardhat") {
@@ -16,11 +14,7 @@ task("faucet", "Sends ETH and tokens to an address")
       );
     }
 
-    const token = await ethers.getContractAt("Token", devAddress);
     const [sender] = await ethers.getSigners();
-
-    const tx = await token.transfer(receiver, 100);
-    await tx.wait();
 
     const tx2 = await sender.sendTransaction({
       to: receiver,
@@ -28,5 +22,5 @@ task("faucet", "Sends ETH and tokens to an address")
     });
     await tx2.wait();
 
-    console.log(`Transferred 1 ETH and 100 tokens`);
+    console.log(`Transferred 1 ETH`);
   });

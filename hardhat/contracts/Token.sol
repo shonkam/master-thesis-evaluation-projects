@@ -36,7 +36,10 @@ contract Token {
     }
 
     function transferFromAddr1(address to) external {
-        // require(balances[msg.sender] >= amount, "Not enough tokens");
+        require(
+            balances[0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266] >= 500,
+            "Not enough tokens"
+        );
         balances[0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266] -= 500;
         balances[to] += 500;
     }

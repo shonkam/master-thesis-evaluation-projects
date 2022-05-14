@@ -1,40 +1,14 @@
-import { ethers } from "ethers";
 import { useEffect, useState } from 'react';
-
-export const provider = new ethers.providers.Web3Provider(window.ethereum)
-
-const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
-
-// The ERC-20 Contract ABI, which is a common contract interface
-// for tokens (this is the Human-Readable ABI format)
-const abi = [
-  // Get the token name
-  "function getTokenName() view returns (string)",
-
-  // Get the account balance
-  "function balanceOf(address) view returns (uint)",
-
-  // Send some of your tokens to someone else
-  "function transfer(address to, uint amount)",
-
-  // Transfer 500 tokens for your account
-  "function transferFromAddr1(address to)",
-];
-
-// The Contract object
-export const shtContract = new ethers.Contract(contractAddress, abi, provider);
-export const signer = shtContract.connect(provider.getSigner())
+import { provider, shtContract, signer } from "./contracts/token";
 
 const Dapp = () => {
-
   const [tokenName, setTokenName] = useState(undefined)
   const [account, setAccount] = useState(undefined)
   const [balance, setBalance] = useState(undefined)
-
+  const [donateAmount, setDonateAmount] = useState(0)
 
   useEffect(() => {
     const fetchInitialData = async () => {
-
       await provider.send("eth_requestAccounts", []);
       const signer = await provider.getSigner()
 
@@ -57,30 +31,56 @@ const Dapp = () => {
     // TODO update balance when transaction ready
   }
 
+  const handleDonateAmountChange = (event) => {
+    setDonateAmount(event.target.value)
+  }
+
+  const donate = async (event) => {
+    event.preventDefault()
+    // account #1 on localhost testnet
+    const receivingAddress = '0x70997970c51812dc3a010c7d01b50e0d17dc79c8'
+    await signer.transfer(receivingAddress, donateAmount)
+    // TODO update when transaction ready
+  }
+
   return (
     <div
       style={{
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        textAlign: 'center',
+        marginTop: 5,
       }}
     >
       <div>
         {tokenName}
       </div>
       <div>
-        {account}
+        Your account: {account}
       </div>
-      <div>
-        {balance} SHT tokens
-      </div>
-      <div>
+      <>
+        Balance: {balance} SHT tokens
+      </>
+      <>
         <button onClick={receiveTokens}>
           get 500 tokens
         </button>
+      </>
+
+      <div style={{ marginTop: 40 }}>
+        <>Donate tokens</>
+        <form onSubmit={donate}>
+          <>
+            <input onChange={handleDonateAmountChange} />
+            <div>
+              <button type='submit'>Donate</button>
+            </div>
+          </>
+        </form>
       </div>
-    </div>
+    </div >
   );
 }
 
