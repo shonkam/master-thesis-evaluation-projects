@@ -1,3 +1,7 @@
 ## This repository contains all the source code that was produced while doing the evaluation for my Master's thesis.
 
-### Each folder represents the development environment/framework under evaluation. 
+The aim of the thesis is to evaluate smart contract / dApp development environments/framework. 
+
+Thus, the projects inside this repo aren't meant to be fully functioning and polished, but rather serve as a documentation of what was done during the evaluation.
+
+Each folder represents the development environment/framework under evaluation.
