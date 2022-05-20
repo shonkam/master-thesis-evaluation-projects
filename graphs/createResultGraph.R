@@ -28,6 +28,7 @@ reliability = sum(hardhatPoints[30:31])/maxReliability
 security = sum(hardhatPoints[32:33])/maxSecurity
 maintainability = sum(hardhatPoints[34:36])/maxMaintainability
 portability = sum(hardhatPoints[37:39])/maxPortability
+(portability)
 
 # data for the graph
 data <- data.frame(
@@ -41,7 +42,7 @@ data <- data.frame(
     "Main",
     "Port"
     ),
-  Score = c(
+  Percentage = c(
     # converts to percentages
     functionalSuitability * 100,
     performanceEfficiency * 100,
@@ -54,6 +55,22 @@ data <- data.frame(
   )
 )
 
+Characteristics = c(
+    "Functional suitability",
+    "Performance efficiency",
+    "Compatibility",
+    "Usability",
+    "Reliability",
+    "Security",
+    "Maintainability",
+    "Portability"
+  )
+
+
 # print graph
-ggplot(data, aes(x=Characteristic, y=Score)) +
-  geom_bar(stat="identity")
+ggplot(data, aes(x=Characteristic, y=Percentage, fill = Characteristics)) +
+  geom_bar(stat="identity")+
+  ggtitle("Hardhat evaluation")+
+  theme(plot.title = element_text(hjust = 0.5))+
+  geom_text(aes(label=round(Percentage, digits=0)), color="black", vjust = 0, nudge_y = 0.5)+
+  scale_fill_grey()
