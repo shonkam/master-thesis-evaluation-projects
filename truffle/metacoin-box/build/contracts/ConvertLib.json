@@ -34,7 +34,7 @@
   "sourceMap": "66:205:0:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
   "deployedSourceMap": "66:205:0:-;;;;;;;;;;;;;;;;;;;;;;;;91:178;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;91:178:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;193:23;248:14;239:6;:23;232:30;;91:178;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.25 <0.7.0;\n\nlibrary ConvertLib {\n    function convert(uint256 amount, uint256 conversionRate)\n        public\n        pure\n        returns (uint256 convertedAmount)\n    {\n        return amount * conversionRate;\n    }\n}\n",
-  "sourcePath": "/home/honka/Git/master-thesis-evaluation-projects/truffle/contracts/ConvertLib.sol",
+  "sourcePath": "/home/honka/Git/master-thesis-evaluation-projects/truffle/metacoin-box/contracts/ConvertLib.sol",
   "ast": {
     "absolutePath": "project:/contracts/ConvertLib.sol",
     "exportedSymbols": {
@@ -479,9 +479,17 @@
     "name": "solc",
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xA459034e8d0eE8d2bA4F2E1A9C4647133F09C5E0",
+      "transactionHash": "0xe9a82ca8c3df0ceb51259b773fc8c509754c138d836c4980e8105cb977fb9573"
+    }
+  },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-05-21T06:39:20.196Z",
+  "updatedAt": "2022-05-22T11:43:25.008Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
