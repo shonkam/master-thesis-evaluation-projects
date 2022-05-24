@@ -2,6 +2,6 @@
 
 The aim of the thesis is to evaluate smart contract / dApp development environments/framework. 
 
-Thus, the projects inside this repo aren't meant to be fully functioning and polished, but rather serve as a documentation of what was done during the evaluation.
+Thus, the projects inside this repo aren't meant to be fully functioning and polished, but rather serve as a documentation of what was produced during the evaluation. A vast majority of the code is templates/tutorial projects.
 
-Graphs contains scripts for creating graphs from the evaluation data and the rest of the folders show what was done while evaluating each development environments/frameworks.
+Graphs contain scripts for creating graphs from the evaluation data and the rest of the folders show what was done while evaluating each development environments/frameworks.
