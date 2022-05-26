@@ -6,10 +6,10 @@ library(ggplot2)
 library(here)
 
 # max scores for each characteristic
-maxFunctionalSuitability = 63
-maxPerformanceEfficiency = 12
-maxCompatibility = 5
-maxUsability = 31
+maxFunctionalSuitability = 56
+maxPerformanceEfficiency = 13
+maxCompatibility = 14
+maxUsability = 33
 maxReliability = 10
 maxSecurity = 10
 maxMaintainability = 13
@@ -20,25 +20,24 @@ hardhatResults <- read.csv(here("data/hardhatData.csv"))
 hardhatPoints = hardhatResults$Grade
 
 # (points from evaluation / max points)
-functionalSuitability = sum(hardhatPoints[1:15])/maxFunctionalSuitability
-performanceEfficiency = sum(hardhatPoints[16:18])/maxPerformanceEfficiency
-compatibility = sum(hardhatPoints[19])/maxCompatibility
-usability = sum(hardhatPoints[20:29])/maxUsability
-reliability = sum(hardhatPoints[30:31])/maxReliability
-security = sum(hardhatPoints[32:33])/maxSecurity
-maintainability = sum(hardhatPoints[34:36])/maxMaintainability
-portability = sum(hardhatPoints[37:39])/maxPortability
-(portability)
+functionalSuitability = sum(hardhatPoints[1:13])/maxFunctionalSuitability
+performanceEfficiency = sum(hardhatPoints[14:16])/maxPerformanceEfficiency
+compatibility = sum(hardhatPoints[17:20])/maxCompatibility
+usability = sum(hardhatPoints[21:30])/maxUsability
+reliability = sum(hardhatPoints[31:32])/maxReliability
+security = sum(hardhatPoints[33:34])/maxSecurity
+maintainability = sum(hardhatPoints[35:37])/maxMaintainability
+portability = sum(hardhatPoints[38:40])/maxPortability
 
 # data for the graph
 data <- data.frame(
   Characteristic = c(
-    "Funct", 
+    "Func",
     "Perf",
     "Comp",
-    "Usa",
-    "Rel",
-    "Sec",
+    "Usab",
+    "Reli",
+    "Secu",
     "Main",
     "Port"
     ),
@@ -52,10 +51,8 @@ data <- data.frame(
     security * 100,
     maintainability * 100,
     portability * 100
-  )
-)
-
-Characteristics = c(
+  ),
+  Characteristics = c(
     "Functional suitability",
     "Performance efficiency",
     "Compatibility",
@@ -65,10 +62,14 @@ Characteristics = c(
     "Maintainability",
     "Portability"
   )
+)
+
+
 
 
 # print graph
 ggplot(data, aes(x=Characteristic, y=Percentage, fill = Characteristics)) +
+  scale_x_discrete(limits=data$Characteristic)+
   geom_bar(stat="identity")+
   ggtitle("Hardhat evaluation")+
   theme(plot.title = element_text(hjust = 0.5))+
