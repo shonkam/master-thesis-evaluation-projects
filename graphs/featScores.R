@@ -17,7 +17,7 @@ maxPoints = results$Max.score
 # first patch
 ReceivedScore <- points[1:13]
 MaxScore <- maxPoints[1:13]
-id <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13)
+id <- c(1:13)
 
 set <- data.frame(ReceivedScore, MaxScore, id)
 (set)

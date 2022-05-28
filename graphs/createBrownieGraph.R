@@ -64,14 +64,12 @@ data <- data.frame(
   )
 )
 
-
-
-
 # print graph
 ggplot(data, aes(x=Characteristic, y=Percentage, fill = Characteristics)) +
   scale_x_discrete(limits=data$Characteristic)+
+  scale_y_continuous(limits = c(0,105), expand = c(0, 0))+
   geom_bar(stat="identity")+
-  ggtitle("Brownie evaluation")+
+  ylab("Score % of the max available")+
   theme(plot.title = element_text(hjust = 0.5))+
   geom_text(aes(label=round(Percentage, digits=0)), color="black", vjust = 0, nudge_y = 0.5)+
   scale_fill_grey()
