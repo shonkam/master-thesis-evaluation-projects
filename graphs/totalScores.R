@@ -14,6 +14,10 @@ browniePoints = brownieData$Grade
 
 maxTotalScore = 164
 
+(sum(hardhatPoints))
+(sum(trufflePoints))
+(sum(browniePoints))
+
 hardhatScore = round(((sum(hardhatPoints)) / maxTotalScore), digits=2)
 truffleScore = round(((sum(trufflePoints)) / maxTotalScore), digits=2)
 brownieScore = round(((sum(browniePoints)) / maxTotalScore), digits=2)

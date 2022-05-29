@@ -8,8 +8,8 @@ library(reshape2)
 library(Rcpp)
 
 #results <- read.csv(here("data/hardhatData.csv"))
-#results <- read.csv(here("data/truffleData.csv"))
-results <- read.csv(here("data/brownieData.csv"))
+results <- read.csv(here("data/truffleData.csv"))
+#results <- read.csv(here("data/brownieData.csv"))
 
 points = results$Grade
 maxPoints = results$Max.score
